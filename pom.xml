@@ -9,6 +9,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
+        <sdf.s>1.4.4</sdf.s>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <kotlin.version>2.1.10</kotlin.version>
