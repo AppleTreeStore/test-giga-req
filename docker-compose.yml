@@ -4,7 +4,7 @@ services:
   app:
     image: myapp
     ports:
-      - "443:443"
+      - "80:80"
     build: .
     volumes:
       - .:/usr/src/myapp
