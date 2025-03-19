@@ -21,4 +21,4 @@ WORKDIR /usr/app
 COPY --from=build /usr/src/myapp/target/*.jar app.jar
 
 # Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar", "--spring.config.location=classpath:/application.yml"]
