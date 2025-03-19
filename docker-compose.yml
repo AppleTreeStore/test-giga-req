@@ -1,21 +1,28 @@
-version: '2'
-networks:
-  dev:
-
 services:
-  nginx:
-    image: nginx:stable-alpine
+  app:
+    image: myapp
+    build: .
+    volumes:
+      - .:/usr/src/myapp
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    command: mvn spring-boot:run
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`martinovich.online`)"
+      - "traefik.http.routers.app.entrypoints=web"
+      - "traefik.http.services.app.loadbalancer.server.port=80"
+  traefik:
+    image: traefik:latest
+    container_name: traefik
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - backend
-    networks:
-      - dev
-
-  backend:
-    build:
-      context: ./backend
-    networks:
-      - dev
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.yml:/etc/traefik/traefik.yml
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
