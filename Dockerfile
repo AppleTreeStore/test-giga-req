@@ -19,6 +19,7 @@ WORKDIR /usr/app
 
 # Copy the built JAR file from the build stage
 COPY --from=build /usr/src/myapp/target/*.jar app.jar
+COPY src/main/resources/application.yml /usr/app/config/application.yml
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar", "--spring.config.location=classpath:/application.yml"]
