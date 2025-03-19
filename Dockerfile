@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine AS build
+FROM maven:3.8.6-eclipse-temurin:17-jdk-alpine AS build
 
 # Set the working directory inside the container
 WORKDIR /usr/src/myapp
