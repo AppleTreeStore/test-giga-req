@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'giga_requirements'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5443/giga_requirements
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db:5443/giga_requirements
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2236
+
+  db:
+    image: 'postgres:latest'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2236
+      - POSTGRES_DB=restaurant
+      - PG_PORT=5443
