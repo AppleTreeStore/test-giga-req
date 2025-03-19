@@ -2,12 +2,12 @@ version: '2'
 
 services:
   app:
-    image: 'giga_requirements'
-    build:
-      context: .
-    container_name: app
-    ports:
-      - "8080:8080"
+    build: .
+    volumes:
+      - .:/usr/src/myapp
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    command: mvn spring-boot:run
 #    depends_on:
 #      - db
 #    environment:
