@@ -9,9 +9,10 @@ services:
     command: mvn spring-boot:run
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`martinovich.online`)"
-      - "traefik.http.routers.app.entrypoints=web"
-      - "traefik.http.services.app.loadbalancer.server.port=80"
+      - "traefik.http.routers.test-giga-req.rule=Host(backend.$DOMAIN)"
+      - "traefik.http.services.test-giga-req.loadbalancer.server.port=8090"
+      - "traefik.http.routers.test-giga-req.entrypoints=websecure"
+      - "traefik.http.routers.test-giga-req.tls.certresolver=myresolver"
   traefik:
     image: traefik:latest
     container_name: traefik
