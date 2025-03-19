@@ -1,29 +1,21 @@
 version: '2'
+networks:
+  dev:
 
 services:
-  app:
-    image: myapp
+  nginx:
+    image: nginx:stable-alpine
     ports:
       - "80:80"
-    build: .
     volumes:
-      - .:/usr/src/myapp
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-    command: mvn spring-boot:run
-#    depends_on:
-#      - db
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5443/giga_requirements
-#      - SPRING_LIQUIBASE_URL=jdbc:postgresql://db:5443/giga_requirements
-#      - SPRING_DATASOURCE_USERNAME=postgres
-#      - SPRING_DATASOURCE_PASSWORD=2236
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend
+    networks:
+      - dev
 
-#  db:
-#    image: 'postgres:latest'
-#    container_name: db
-#    environment:
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_PASSWORD=2236
-#      - POSTGRES_DB=restaurant
-#      - PG_PORT=5443
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - dev
