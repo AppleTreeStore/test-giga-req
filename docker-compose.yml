@@ -1,31 +1,24 @@
 services:
-  app:
-    image: myapp
-    build: .
-    volumes:
-      - .:/usr/src/myapp
+  spring-app:
+    image: myapp:latest
+    container_name: spring-app
+    ports:
+      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=dev
-    command: mvn spring-boot:run
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`$DOMAIN`)"
-      - "traefik.http.services.app.loadbalancer.server.port=8090"
-      - "traefik.http.routers.app.entrypoints=websecure"
-      - "traefik.http.routers.app.tls.certresolver=myresolver"
-
-  traefik:
-    image: traefik:latest
-    container_name: traefik
+    networks:
+      - app-network
+  nginx:
+    image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
-      - "443:443"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik.yml:/etc/traefik/traefik.yml
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - spring-app
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
