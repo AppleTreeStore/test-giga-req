@@ -7,7 +7,6 @@ import org.springframework.context.annotation.PropertySource
 import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
-@PropertySource("classpath:application-secret.properties")
 open class WebClientConfig {
 
     @Value("auth.token")
