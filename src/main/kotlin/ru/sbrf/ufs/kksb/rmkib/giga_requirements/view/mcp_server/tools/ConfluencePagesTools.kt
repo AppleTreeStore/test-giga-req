@@ -8,12 +8,17 @@ import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluenc
 import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rs.ConfluencePageRs
 
 @RestController
-@RequestMapping("/api/conf-pages/tools")
+@RequestMapping("/conf-pages/tools")
 class ConfluencePagesTools(
     private val confluencePagesControllerApi: ConfluencePagesControllerApi
 ) {
     @PostMapping("/current-page")
     fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
         return confluencePagesControllerApi.getCurrentConfluencePage(rq)
+    }
+
+    @PostMapping("/ce")
+    fun getCurrentConfluencePge(rq: ConfluencePageRq): String {
+        return "123"
     }
 }
