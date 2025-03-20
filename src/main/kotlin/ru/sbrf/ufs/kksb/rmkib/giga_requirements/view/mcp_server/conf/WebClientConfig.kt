@@ -8,7 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient
 open class WebClientConfig {
     @Bean
     open fun webClient(): WebClient = WebClient.builder()
-        .baseUrl("https://your-confluence-instance.atlassian.net/wiki/rest/api")
-        .defaultHeader("Authorization", "Bearer your_token")
+        .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki/rest/api/search")
+        .defaultHeader("Authorization", "Basic ")
+        .defaultHeader("Content-Type", "application/json")
         .build()
 }

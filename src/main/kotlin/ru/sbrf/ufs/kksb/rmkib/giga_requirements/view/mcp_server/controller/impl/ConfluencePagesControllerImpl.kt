@@ -12,6 +12,7 @@ class ConfluencePagesControllerImpl(
     private val webClient: WebClient
 ): ConfluencePagesControllerApi {
     override fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
+      print(webClient.get())
       val res = webClient.get()
           .uri("/rest/api/content/{${rq.id}}")
           .retrieve()
