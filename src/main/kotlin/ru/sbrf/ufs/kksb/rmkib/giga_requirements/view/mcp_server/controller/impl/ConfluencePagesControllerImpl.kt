@@ -16,7 +16,7 @@ class ConfluencePagesControllerImpl(
             throw IllegalArgumentException("ID cannot be null")
         }
         val res = webClient.get()
-            .uri("/rest/api/content/{${rq.id}}")
+            .uri("/rest/api/content/${rq.id}")
             .retrieve()
             .bodyToMono(String::class.java)
             .block();
