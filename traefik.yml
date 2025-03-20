@@ -1,0 +1,13 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: hunter-21@yandex.ru
+      storage: /etc/traefik/acme.json
+      httpChallenge:
+        entryPoint: web
