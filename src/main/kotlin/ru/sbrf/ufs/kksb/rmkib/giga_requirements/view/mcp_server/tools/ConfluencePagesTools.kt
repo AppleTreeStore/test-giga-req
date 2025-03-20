@@ -1,5 +1,6 @@
 package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.tools
 
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -8,12 +9,17 @@ import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluenc
 import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rs.ConfluencePageRs
 
 @RestController
-@RequestMapping("/api/conf-pages/tools")
+//@RequestMapping("/api/conf-pages/tools")
 class ConfluencePagesTools(
     private val confluencePagesControllerApi: ConfluencePagesControllerApi
 ) {
-    @PostMapping("/current-page")
+    @PostMapping("/api/conf-pages/tools/current-page")
     fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
         return confluencePagesControllerApi.getCurrentConfluencePage(rq)
+    }
+
+    @GetMapping
+    fun get(): String {
+        return "321"
     }
 }
