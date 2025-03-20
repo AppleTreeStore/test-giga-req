@@ -2,13 +2,15 @@ version: '3.8'
 
 services:
   spring-app:
-    image: myapp:latest
+    image: myapp
+    build: .
     container_name: spring-app
     ports:
       - "8090:8090"
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - SERVER_PORT=8090
+    command: mvn spring-boot:run
     networks:
       - app-network
 
