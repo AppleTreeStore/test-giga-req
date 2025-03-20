@@ -1,6 +1,7 @@
 package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.tools
 
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.controller.api.ConfluencePagesControllerApi
@@ -13,7 +14,7 @@ class ConfluencePagesTools(
     private val confluencePagesControllerApi: ConfluencePagesControllerApi
 ) {
     @PostMapping("/current-page")
-    fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
+    fun getCurrentConfluencePage(@RequestBody rq: ConfluencePageRq): ConfluencePageRs {
         return confluencePagesControllerApi.getCurrentConfluencePage(rq)
     }
 
