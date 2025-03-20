@@ -12,12 +12,14 @@ class ConfluencePagesControllerImpl(
     private val webClient: WebClient
 ): ConfluencePagesControllerApi {
     override fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
-      print(webClient.get())
-      val res = webClient.get()
-          .uri("/rest/api/content/{${rq.id}}")
-          .retrieve()
-          .bodyToMono(String::class.java)
-          .block();
+        if (rq.id == null) {
+            throw IllegalArgumentException("ID cannot be null")
+        }
+        val res = webClient.get()
+            .uri("/rest/api/content/{${rq.id}}")
+            .retrieve()
+            .bodyToMono(String::class.java)
+            .block();
         return ConfluencePageRs(data = res)
     }
 }
