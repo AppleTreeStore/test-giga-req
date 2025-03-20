@@ -13,6 +13,8 @@ target/
 *.ipr
 .env
 
+src/main/resources/app-secret.properties
+
 ### Eclipse ###
 .apt_generated
 .classpath
