@@ -1,6 +1,5 @@
-package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.tools
+package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server
 
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
