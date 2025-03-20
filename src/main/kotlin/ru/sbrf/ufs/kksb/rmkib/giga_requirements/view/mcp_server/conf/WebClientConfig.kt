@@ -17,7 +17,7 @@ open class WebClientConfig {
     open fun webClient(): WebClient {
         val token = Scanner(tokenResource.inputStream).useDelimiter("\\A").next().trim()
         return WebClient.builder()
-            .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki/rest/api/search")
+            .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki")
             .defaultHeader("Authorization", "Basic $${token}")
             .defaultHeader("Content-Type", "application/json")
             .build()
