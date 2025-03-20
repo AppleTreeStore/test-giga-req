@@ -10,15 +10,15 @@ import java.util.*
 @Configuration
 open class WebClientConfig {
 
-    @Value("classpath:token.txt")
-    private lateinit var tokenResource: Resource
+    /*@Value("classpath:token.txt")
+    private lateinit var tokenResource: Resource*/
 
     @Bean
     open fun webClient(): WebClient {
-        val token = Scanner(tokenResource.inputStream).useDelimiter("\\A").next().trim()
+        //val token = Scanner(tokenResource.inputStream).useDelimiter("\\A").next().trim()
         return WebClient.builder()
             .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki")
-            .defaultHeader("Authorization", "Basic $${token}")
+            .defaultHeader("Authorization", "Basic ${"token"}")
             .defaultHeader("Content-Type", "application/json")
             .build()
     }
