@@ -11,6 +11,8 @@ services:
       - SERVER_PORT=8090
     networks:
       - app-network
+    secrets:
+      - conf_auth_token
 
   nginx:
     image: nginx:latest
@@ -23,6 +25,10 @@ services:
       - spring-app
     networks:
       - app-network
+
+secrets:
+  my_secret:
+    external: true
 
 networks:
   app-network:
