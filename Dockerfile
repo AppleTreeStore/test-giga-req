@@ -9,6 +9,6 @@ FROM  openjdk:17-jdk-slim
 WORKDIR /usr/app
 COPY --from=build /usr/src/myapp/target/*.jar app.jar
 COPY src/main/resources/application.yml /usr/app/config/application.yml
-COPY app-secret.properties /config/app-secret.properties
+COPY src/main/resources/app-secret.properties /config/app-secret.properties
 ENV SPRING_CONFIG_LOCATION=file:/usr/app/config/application.yml
 ENTRYPOINT ["java", "-jar", "app.jar", "--spring.config.location=classpath:/application.yml"]
