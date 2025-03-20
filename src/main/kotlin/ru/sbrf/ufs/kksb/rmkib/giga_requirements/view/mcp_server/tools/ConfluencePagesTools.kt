@@ -8,7 +8,7 @@ import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluenc
 import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rs.ConfluencePageRs
 
 @RestController
-@RequestMapping("/conf-pages/tools")
+@RequestMapping("api/conf-pages/tools")
 class ConfluencePagesTools(
     private val confluencePagesControllerApi: ConfluencePagesControllerApi
 ) {
