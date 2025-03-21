@@ -18,6 +18,12 @@ class ConfluencePagesControllerImpl(
             .uri("/pages/${rq.id}")
             .retrieve()
             .bodyToMono(String::class.java)
+            .doOnSuccess { response ->
+                logger.info("Успешный ответ: $response")
+            }
+            .doOnError { error ->
+                logger.error("Ошибка при получении ответа: ${error.message}", error)
+            }
             .block();
         return ConfluencePageRs(data = res)
     }
