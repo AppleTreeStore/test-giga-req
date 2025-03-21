@@ -21,7 +21,7 @@ open class WebClientConfig {
         return WebClient.builder()
             .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki/api/v2")
             .defaultHeader("Authorization", "Basic $token")
-            .defaultHeader("Content-Type", "application/json")
+            .defaultHeader("Accept", "application/json")
             .build()
     }
 }

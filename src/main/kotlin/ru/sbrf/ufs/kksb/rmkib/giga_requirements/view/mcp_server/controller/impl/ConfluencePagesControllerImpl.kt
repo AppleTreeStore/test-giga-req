@@ -16,6 +16,7 @@ class ConfluencePagesControllerImpl(
 
     override fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
         logger.info("Вызов метода getCurrentConfluencePage")
+        println( System.getenv("auth-token"))
         if (rq.id == null) {
             throw IllegalArgumentException("ID страницы не может быть null")
         }
