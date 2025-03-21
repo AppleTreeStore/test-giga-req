@@ -12,7 +12,7 @@ open class WebClientConfig {
     @Bean
     open fun webClient(): WebClient {
         return WebClient.builder()
-            .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki")
+            .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki/api/v2")
             .defaultHeader("Authorization", "Basic ${System.getenv("auth-token")}")
             .defaultHeader("Content-Type", "application/json")
             .build()
