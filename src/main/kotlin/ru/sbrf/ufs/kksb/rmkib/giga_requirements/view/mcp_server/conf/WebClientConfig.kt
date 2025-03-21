@@ -13,8 +13,8 @@ open class WebClientConfig {
     @Bean
     open fun webClient(): WebClient {
         logger.info("Получаем токен-апи")
-        try {
-            val token = System.getenv("auth-token")
+        val token = try {
+            System.getenv("auth-token")
         } catch (ex: Exception) {
             logger.error("Ошибка получения токена: $ex")
         }
