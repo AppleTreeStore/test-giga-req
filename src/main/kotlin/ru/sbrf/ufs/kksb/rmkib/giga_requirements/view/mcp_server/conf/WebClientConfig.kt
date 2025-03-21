@@ -14,7 +14,7 @@ open class WebClientConfig {
     open fun webClient(): WebClient {
         logger.info("Получаем токен-апи")
         val token = try {
-            System.getenv("auth-token")
+            System.getenv("api-token")
         } catch (ex: Exception) {
             logger.error("Ошибка получения токена: $ex")
         }
