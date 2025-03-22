@@ -5,7 +5,7 @@ open class CommonError(
     private val code: String?,
     private val title: String,
     private val text: String
-) {
+): Exception() {
     fun getUUID(): String = uuid
     fun getCode(): String? = code
     fun getTitle(): String = title

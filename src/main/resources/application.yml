@@ -8,7 +8,7 @@ management:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/myappdb
+    url: jdbc:postgresql://62.113.36.162:5432/myappdb
     username: manager
     password: password
   jpa:

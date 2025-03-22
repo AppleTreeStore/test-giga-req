@@ -5,7 +5,7 @@ import java.util.UUID
 class GigaRequirementsIntegrationError(
     uuid: String = UUID.randomUUID().toString(),
     code: String = "INTEGRATION",
-    title: String,
+    title: String = "Неожиданная ошибка интеграции",
     text: String,
 ): CommonError(
     uuid,

@@ -6,18 +6,17 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.PropertySource
 import org.springframework.web.reactive.function.client.WebClient
+import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.entity.Token
+import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.serv.TokenService
 
 @Configuration
-open class WebClientConfig {
+open class WebClientConfig(private val tokenService: TokenService) {
     private val logger = LoggerFactory.getLogger(WebClientConfig::class.java)
+
     @Bean
     open fun webClient(): WebClient {
-        logger.info("Получаем токен-апи")
-        val token = try {
-            System.getenv("api-token")
-        } catch (ex: Exception) {
-            logger.error("Ошибка получения токена: $ex")
-        }
+        val token = tokenService.getToken() // Получаем токен из базы данных
+        logger.info("Получили токен из БД")
         return WebClient.builder()
             .baseUrl("https://elizavetamartinovich1410.atlassian.net/wiki/api/v2")
             .defaultHeader("Authorization", "Basic $token")

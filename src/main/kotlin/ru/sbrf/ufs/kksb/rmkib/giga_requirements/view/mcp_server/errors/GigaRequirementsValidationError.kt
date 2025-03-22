@@ -5,7 +5,7 @@ import java.util.UUID
 class GigaRequirementsValidationError(
     uuid: String = UUID.randomUUID().toString(),
     code: String = "VALIDATION",
-    title: String,
+    title: String = "Ошибка валидации запроса/ответа",
     text: String,
 ): CommonError(
     uuid,

@@ -5,7 +5,7 @@ import java.util.UUID
 class GigaRequirementsTimeoutError(
     uuid: String = UUID.randomUUID().toString(),
     code: String = "TIMEOUT",
-    title: String,
+    title: String = "Таймаут при вызове сервиса",
     text: String,
 ): CommonError(
     uuid,
