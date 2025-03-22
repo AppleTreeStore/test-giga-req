@@ -31,7 +31,7 @@ class ConfluencePagesControllerImpl(
             .doOnError { error ->
                 logger.error("Ошибка при получении ответа: ${error.message}", error)
             }
-            .block();
+            .block()
         return ConfluencePageRs(data = res)
     }
 }
