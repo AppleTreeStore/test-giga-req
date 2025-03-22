@@ -21,7 +21,7 @@ class ConfluencePagesControllerImpl(
         }
         logger.info("Вызываем получение страницы по id через Confluence API")
         val res = webClient.get()
-            .uri("/pages/${rq.id}")
+            .uri("/pages/${rq.id}?body-format=storage")
             .retrieve()
             .bodyToMono(String::class.java)
             .doOnSuccess { response ->
