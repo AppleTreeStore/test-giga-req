@@ -19,7 +19,7 @@ class ConfluencePagesTools(
     @PostMapping("/current-page")
     fun getCurrentConfluencePage(@RequestBody rq: ConfluencePageRq): BaseResponse<ConfluencePageRs> {
         logger.info("Получен вызов на ендпоинт api/conf-pages/tools/current-page. RQ: $rq")
-        return BaseResponse.success(logger, confluencePagesControllerApi.getCurrentConfluencePage(rq))
+        return BaseResponse.success(logger) { confluencePagesControllerApi.getCurrentConfluencePage(rq) }
     }
 
     @PostMapping("/ce")
