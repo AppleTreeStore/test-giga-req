@@ -8,11 +8,11 @@ import java.util.UUID
 
 data class BaseResponse<T>(
     @JsonProperty("body")
-    private var body: T? = null,
+    var body: T? = null,
     @JsonProperty("success")
-    private var success: Boolean? = null,
+    var success: Boolean? = null,
     @JsonProperty("error")
-    private var error: CommonError? = null) {
+    var error: CommonError? = null) {
 
      companion object {
          fun <T> success(logger: Logger, body: () -> T): BaseResponse<T> {
