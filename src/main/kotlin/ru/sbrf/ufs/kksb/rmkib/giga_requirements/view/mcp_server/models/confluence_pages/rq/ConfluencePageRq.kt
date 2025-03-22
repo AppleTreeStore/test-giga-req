@@ -4,5 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class ConfluencePageRq(
     @JsonProperty("id")
-    var id: String? = null
+    var id: String? = null,
+    @JsonProperty("format")
+    var format: String? = null
 )
