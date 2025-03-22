@@ -1,13 +1,10 @@
 package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.conf
 
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.PropertySource
 import org.springframework.web.reactive.function.client.WebClient
-import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.entity.Token
-import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.serv.TokenService
+import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.TokenService
 
 @Configuration
 open class WebClientConfig(private val tokenService: TokenService) {

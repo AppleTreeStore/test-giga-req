@@ -1,6 +1,5 @@
-package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.serv
+package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db
 
-import TokenRepository
 import org.springframework.stereotype.Service
 
 @Service

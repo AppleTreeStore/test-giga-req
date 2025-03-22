@@ -11,5 +11,7 @@ data class Token(
 
     @Column(name = "token", length = 1000)
     val token: String
-)
+)  {
+    constructor() : this(null, "")
+}
 
