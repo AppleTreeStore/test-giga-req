@@ -9,7 +9,7 @@ data class Token(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @Column(name = "token")
+    @Column(name = "token", length = 1000)
     val token: String
 )
 
