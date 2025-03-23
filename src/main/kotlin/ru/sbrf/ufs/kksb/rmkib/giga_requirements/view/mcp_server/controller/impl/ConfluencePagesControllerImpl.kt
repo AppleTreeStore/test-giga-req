@@ -3,10 +3,9 @@ package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.controller.impl
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
-import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.conf.WebClientConfig
 import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.controller.api.ConfluencePagesControllerApi
-import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rq.ConfluencePageRq
-import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rs.ConfluencePageRs
+import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rq.GetConfluencePageRq
+import ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluence_pages.rs.GetConfluencePageRs
 
 @Service
 class ConfluencePagesControllerImpl(
@@ -14,7 +13,7 @@ class ConfluencePagesControllerImpl(
 ): ConfluencePagesControllerApi {
     private val logger = LoggerFactory.getLogger(ConfluencePagesControllerImpl::class.java)
 
-    override fun getCurrentConfluencePage(rq: ConfluencePageRq): ConfluencePageRs {
+    override fun getConfluencePage(rq: GetConfluencePageRq): GetConfluencePageRs {
         logger.info("Вызов метода getCurrentConfluencePage")
         if (rq.id == null) {
             throw IllegalArgumentException("ID страницы не может быть null")
@@ -31,6 +30,6 @@ class ConfluencePagesControllerImpl(
                 logger.error("Ошибка при получении ответа: ${error.message}", error)
             }
             .block()
-        return ConfluencePageRs(data = res)
+        return GetConfluencePageRs(data = res)
     }
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 
 @JsonSerialize
-data class ConfluencePageRs(
+data class GetConfluencePageRs(
     @JsonProperty("data")
     var data: String? = null
 )

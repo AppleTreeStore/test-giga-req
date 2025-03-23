@@ -2,7 +2,7 @@ package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.models.confluen
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class ConfluencePageRq(
+data class GetConfluencePageRq(
     @JsonProperty("id")
     var id: String? = null,
     @JsonProperty("format")
