@@ -12,33 +12,27 @@ data class BaseResponse<T>(
     @JsonProperty("success")
     var success: Boolean? = null,
     @JsonProperty("error")
-    var error: CommonError? = null) {
+    var error: CommonError? = null
+) {
 
-     companion object {
-         fun <T> success(logger: Logger, body: () -> T): BaseResponse<T> {
-             val result = try {
-                 body.invoke()
-             } catch (ex: Exception) {
-                 when (ex) {
-                     is CommonError -> return BaseResponse(
-                         success = false,
-                         body = null,
-                         error = ex
-                     )
-                     else -> return BaseResponse(
-                         success = false,
-                         body = null,
-                         error = GigaRequirementsIntegrationError(
-                             text = ex.message.toString()
-                         )
-                     )
-                 }
-             }
-             logger.info("Возвращаем успешный ответ: $result")
-             return BaseResponse(
-                 success = true,
-                 body = result
-             )
-         }
-     }
- }
+    companion object {
+        fun <T> success(logger: Logger, body: () -> T): BaseResponse<T> {
+            val result = try {
+                body.invoke()
+            } catch (ex: Exception) {
+                return BaseResponse(
+                    success = false,
+                    body = null,
+                    error = GigaRequirementsIntegrationError(
+                        text = ex.message.toString()
+                    )
+                )
+            }
+            logger.info("Возвращаем успешный ответ: $result")
+            return BaseResponse(
+                success = true,
+                body = result
+            )
+        }
+    }
+}

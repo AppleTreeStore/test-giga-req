@@ -1,4 +1,4 @@
-package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.entity
+package ru.sbrf.ufs.kksb.rmkib.giga_requirements.view.mcp_server.db.token.entity
 
 import jakarta.persistence.*
 
