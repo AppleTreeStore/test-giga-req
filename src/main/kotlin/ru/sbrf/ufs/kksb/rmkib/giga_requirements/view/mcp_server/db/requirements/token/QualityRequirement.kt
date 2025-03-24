@@ -13,10 +13,7 @@ data class QualityRequirement(
     val name: String? = null,
 
     @Column(nullable = false)
-    val isMain: Boolean? = null,
-
-    @OneToMany(mappedBy = "requirement", fetch = FetchType.LAZY)
-    val rules: List<QualityRule>? = null
+    val isMain: Boolean? = null
 ) {
-    constructor() : this(null, "", false, emptyList())
+    constructor() : this(null, "", false)
 }
